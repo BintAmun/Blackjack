@@ -9,23 +9,23 @@ public class Blackjack {
         System.out.println("Do you have a knack for Black Jack?");
         System.out.println("We shall see..");
         System.out.println("..Ready? Press anything to begin!");
-        //Task 3 – Wait for the user to press enter.
         scan.nextLine();
-        //Task 4 – Get two random cards.
-        //       – Print them: \n You get a \n" + <randomCard> + "\n and a \n" + <randomCard>
-        int card1 = drawRandomCard();
-        int card2 = drawRandomCard();
-        System.out.println("\n You get a \n" + cardString(card1) + "\n and a \n " + cardString(card2));
+        //user cards
+        int userCard1 = drawRandomCard();
+        int userCard2 = drawRandomCard();
+        int userHandValue = userCard1 + userCard2;
 
-        //Task 5 – Print the sum of your hand value.
-        //       – print: your total is: <hand value>
-        int handValue = card1 + card2;
-        System.out.println("Your hand total is: " + handValue);
-
+        System.out.println("\n You get a \n" + cardString(userCard1) + "\n and a \n " + cardString(userCard2));
+        System.out.println("Your hand total is: " + userHandValue);
         
-        //Task 6 – Get two random cards for the dealer.
-        //       – Print: The dealer shows \n" + <first card> + "\nand has a card facing down \n" + <facedown card>
-        //       – Print: \nThe dealer's total is hidden
+        //dealer cards
+        int dealerCard1 = drawRandomCard();
+        int dealerCard2 = drawRandomCard();
+        int dealerHandValue = dealerCard1 + dealerCard2;
+
+        System.out.println("The dealer shows \n " + dealerCard1 + "\n and has a card facing down \n" + faceDown());
+        System.out.println("The dealer's total is hidden.");
+
 
        
         //Task 8 – Keep asking the player to hit or stay (while loop).
