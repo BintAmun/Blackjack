@@ -23,7 +23,7 @@ public class Blackjack {
         int dealerCard2 = drawRandomCard();
         int dealerHandValue = dealerCard1 + dealerCard2;
 
-        System.out.println("The dealer shows \n " + dealerCard1 + "\n and has a card facing down \n" + faceDown());
+        System.out.println("The dealer shows \n " + cardString(dealerCard1) + "\n and has a card facing down \n" + faceDown());
         System.out.println("The dealer's total is hidden.");
 
 
@@ -36,14 +36,27 @@ public class Blackjack {
         //             - print: your new total is <total>
 
         //       2. Once the player stays, break the loop. 
-
+        
+        System.out.println("Would you like to hit or stay?");
+        //find out if user wants to hit or stay
+        String choice = hitOrStay();
+        //assign variable to allow them to choose again
+        int currentCardValue = drawRandomCard();
+        while (choice.equalsIgnoreCase("hit")){
+            currentCardValue = drawRandomCard();
+            userHandValue += currentCardValue;
+            System.out.println("\n You get a \n" + cardString(currentCardValue) + "\n ");
+            System.out.println("Your new total is: " + userHandValue);
+           choice = hitOrStay();
+            
+        }//w
         
         //For tasks 9 to 13, see the article: Blackjack Part II. 
          scan.close();
 
-    }
+    }//main
 
-    /** Task 1 – make a function that returns a random number between 1 and 13
+    /** 
      * Function name – drawRandomCard
      * @return (int)
      *
@@ -53,10 +66,10 @@ public class Blackjack {
      */
     public static int drawRandomCard() {
         return (int) (Math.random() * 13) + 1;
-    }
+    }//drc
     
 
-    /** Task 2 – make a function that returns a String drawing of the card.
+    /** 
      * Function name – cardString
      * @param cardNumber (int)
      * @return (String)
@@ -74,7 +87,7 @@ public class Blackjack {
             "  |(_'_)|\n"+
             "  |  |  |\n"+
             "  |____V|\n";
-            break;
+            
 
             case 2: return 
 
@@ -84,7 +97,7 @@ public class Blackjack {
                 "  |     |\n"+
                 "  |  o  |\n"+
                 "  |____Z|\n";
-            break;
+            
             
             case 3: return 
             "   _____\n" +
@@ -93,7 +106,7 @@ public class Blackjack {
             "  |     |\n"+
             "  |  o  |\n"+
             "  |____E|\n";
-            break;
+            
 
             case 4: return
             "   _____\n" +
@@ -102,7 +115,7 @@ public class Blackjack {
             "  |     |\n"+
             "  | o o |\n"+
             "  |____h|\n";
-            break;
+            
 
             case 5: return 
                 "   _____ \n" +
@@ -111,7 +124,7 @@ public class Blackjack {
                 "  |  o  |\n" +
                 "  | o o |\n" +
                 "  |____S|\n";
-                break;
+                
 
             case 6: return 
                 "   _____ \n" +
@@ -120,7 +133,7 @@ public class Blackjack {
                 "  | o o |\n" +
                 "  | o o |\n" +
                 "  |____6|\n";
-                break;
+                
 
             case 7: return
         
@@ -130,7 +143,7 @@ public class Blackjack {
                 "  |o o o|\n" +
                 "  | o o |\n" +
                 "  |____7|\n";
-                break;
+                
 
             case 8: return
         
@@ -140,7 +153,7 @@ public class Blackjack {
                 "  | o o |\n" +
                 "  |o o o|\n" +
                 "  |____8|\n";
-                break;
+                
         
             case 9: return
                 "   _____ \n" +
@@ -149,7 +162,7 @@ public class Blackjack {
                 "  |o o o|\n" +
                 "  |o o o|\n" +
                 "  |____9|\n";
-                break;
+                
 
             case 10: return 
                 "   _____ \n" +
@@ -158,7 +171,7 @@ public class Blackjack {
                 "  |o o o|\n" +
                 "  |o o o|\n" +
                 "  |___10|\n";
-                break;
+                
         
             case 11: return 
 
@@ -168,7 +181,7 @@ public class Blackjack {
                 "  |o o% |\n"+ 
                 "  | | % |\n"+ 
                 "  |__%%[|\n";
-                break;
+                
         
             case 12: return 
 
@@ -178,7 +191,7 @@ public class Blackjack {
                 "  |o o%%|\n"+ 
                 "  | |%%%|\n"+ 
                 "  |_%%%O|\n";
-                break;
+                
         
             case 13: return
                 "   _____\n" +
@@ -187,7 +200,7 @@ public class Blackjack {
                 "  |o o%%|\n"+ 
                 "  | |%%%|\n"+ 
                 "  |_%%%>|\n";
-                break;
+                
 
                 default: return "Something went horribly wrong.";
             }//switch
@@ -201,7 +214,7 @@ public class Blackjack {
         "  | JJJ |\n"+
         "  |  J  |\n"+
         "  |_____|\n";
-    }
+    }//fD
     
     /** Task 7 – make a function that asks the user to hit or stay.
      * Function name – hitOrStay
@@ -213,5 +226,18 @@ public class Blackjack {
      *      Please write 'hit' or 'stay'
      *   3. Returns the user's option 
      */
+    public static String hitOrStay() {
+        System.out.println("Please enter 'hit' or 'stay'");
+        String choice = scan.nextLine();
+
+        while (!choice.equalsIgnoreCase("hit") || !choice.equalsIgnoreCase("stay")){
+            System.out.println("Please choose hit or stay.");
+            choice = scan.nextLine();
+            
+        } 
+        
+       return choice;
+
+    }//hos
 }//class 
 
