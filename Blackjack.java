@@ -13,7 +13,8 @@ public class Blackjack {
         //user cards
         int userCard1 = drawRandomCard();
         int userCard2 = drawRandomCard();
-        int userHandValue = userCard1 + userCard2;
+        //maintain max value of 10 - kings, queens
+        int userHandValue = Math.min(userCard1, 10) + Math.min(userCard2, 10);
 
         System.out.println("\n You get a \n" + cardString(userCard1) + "\n and a \n " + cardString(userCard2));
         System.out.println("Your hand total is: " + userHandValue);
@@ -21,7 +22,7 @@ public class Blackjack {
         //dealer cards
         int dealerCard1 = drawRandomCard();
         int dealerCard2 = drawRandomCard();
-        int dealerHandValue = dealerCard1 + dealerCard2;
+        int dealerHandValue = Math.min(dealerCard1, 10) + Math.min(dealerCard2, 10);
 
         System.out.println("The dealer shows \n " + cardString(dealerCard1) + "\n and has a card facing down \n" + faceDown());
         System.out.println("The dealer's total is hidden.");
