@@ -229,8 +229,12 @@ public class Blackjack {
     public static String hitOrStay() {
         System.out.println("Please enter 'hit' or 'stay'");
         String choice = scan.nextLine();
-
-        while (!choice.equalsIgnoreCase("hit") || !choice.equalsIgnoreCase("stay")){
+        if (choice.equalsIgnoreCase("hit")) {
+            return "hit";
+        } else if (choice.equalsIgnoreCase("stay")) {
+            return "stay";
+        }
+        while (!choice.equalsIgnoreCase("hit") && !choice.equalsIgnoreCase("stay")){
             System.out.println("Please choose hit or stay.");
             choice = scan.nextLine();
             
@@ -239,5 +243,9 @@ public class Blackjack {
        return choice;
 
     }//hos
+
+    switch (cardCorrectValues) {
+        case 1: 
+    }
 }//class 
 
