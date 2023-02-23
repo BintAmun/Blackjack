@@ -27,6 +27,7 @@ public class Blackjack {
         System.out.println("The dealer shows \n " + cardString(dealerCard1) + "\n and has a card facing down \n" + faceDown());
         System.out.println("The dealer's total is hidden.");
 
+        String choice = hitOrStay();
 
        
         //Task 8 – Keep asking the player to hit or stay (while loop).
@@ -38,19 +39,19 @@ public class Blackjack {
 
         //       2. Once the player stays, break the loop. 
         
-        System.out.println("Would you like to hit or stay?");
+        // System.out.println("Would you like to hit or stay?");
         //find out if user wants to hit or stay
-        String choice = hitOrStay();
+        
         //assign variable to allow them to choose again
         int currentCardValue = drawRandomCard();
-        while (choice.equalsIgnoreCase("hit")){
-            currentCardValue = drawRandomCard();
-            userHandValue += currentCardValue;
-            System.out.println("\n You get a \n" + cardString(currentCardValue) + "\n ");
-            System.out.println("Your new total is: " + userHandValue);
-           choice = hitOrStay();
+        // while (choice.equalsIgnoreCase("hit")){
+        //     currentCardValue = drawRandomCard();
+        //     userHandValue += currentCardValue;
+        //     System.out.println("\n You get a \n" + cardString(currentCardValue) + "\n ");
+        //     System.out.println("Your new total is: " + userHandValue);
+        //    choice = hitOrStay();
             
-        }//w
+        // }//w
         
         //For tasks 9 to 13, see the article: Blackjack Part II. 
          scan.close();
@@ -228,25 +229,14 @@ public class Blackjack {
      *   3. Returns the user's option 
      */
     public static String hitOrStay() {
-        System.out.println("Please enter 'hit' or 'stay'");
-        String choice = scan.nextLine();
-        if (choice.equalsIgnoreCase("hit")) {
-            return "hit";
-        } else if (choice.equalsIgnoreCase("stay")) {
-            return "stay";
-        }
-        while (!choice.equalsIgnoreCase("hit") && !choice.equalsIgnoreCase("stay")){
+        String choice = "";
+        while ((!choice.equalsIgnoreCase("hit") && !choice.equalsIgnoreCase("stay"))){
             System.out.println("Please choose hit or stay.");
-            choice = scan.nextLine();
-            
-        } 
-        
+            choice = scan.nextLine();   
+        }  
        return choice;
-
     }//hos
 
-    switch (cardCorrectValues) {
-        case 1: 
-    }
+
 }//class 
 
