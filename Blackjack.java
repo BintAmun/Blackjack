@@ -14,10 +14,10 @@ public class Blackjack {
         int userCard1 = drawRandomCard();
         int userCard2 = drawRandomCard();
         //maintain max value of 10 - kings, queens
-        int userHandValue = Math.min(userCard1, 10) + Math.min(userCard2, 10);
+        int userTotal = Math.min(userCard1, 10) + Math.min(userCard2, 10);
 
         System.out.println("\n You get a \n" + cardString(userCard1) + "\n and a \n " + cardString(userCard2));
-        System.out.println("Your hand total is: " + userHandValue);
+        System.out.println("Your hand total is: " + userTotal);
         
         //dealer cards
         int dealerCard1 = drawRandomCard();
@@ -27,34 +27,27 @@ public class Blackjack {
         System.out.println("The dealer shows \n " + cardString(dealerCard1) + "\n and has a card facing down \n" + faceDown());
         System.out.println("The dealer's total is hidden.");
 
-        String choice = hitOrStay();
+        while (true) {
+            String choice = hitOrStay();
 
-       
-        //Task 8 – Keep asking the player to hit or stay (while loop).
-        //       1. Every time the player hits
-        //             – draw a new card.
-        //             – calculate their new total.
-        //             – print: (new line) You get a (new line) <show new card>.
-        //             - print: your new total is <total>
+            if (choice.equalsIgnoreCase("stay")) {
+                break;
+            }
+            int newCard = drawRandomCard();
+            userTotal += Math.min(newCard, 10);
+            System.out.println("\nYou get a \n " + cardString(newCard));
+            System.out.println("Your total is " + userTotal);
 
-        //       2. Once the player stays, break the loop. 
+            if (userTotal > 21) {
+                System.out.println("Bust! Player loses.");
+                System.exit(0);
+            }
+        }//while
+
+        System.out.println("\nDealer's turn.");
+        System.out.println("\n The Dealer's cards are \n " + cardString(dealerCard1) + "\n and " + cardString(dealerCard2));
         
-        // System.out.println("Would you like to hit or stay?");
-        //find out if user wants to hit or stay
-        
-        //assign variable to allow them to choose again
-        int currentCardValue = drawRandomCard();
-        // while (choice.equalsIgnoreCase("hit")){
-        //     currentCardValue = drawRandomCard();
-        //     userHandValue += currentCardValue;
-        //     System.out.println("\n You get a \n" + cardString(currentCardValue) + "\n ");
-        //     System.out.println("Your new total is: " + userHandValue);
-        //    choice = hitOrStay();
-            
-        // }//w
-        
-        //For tasks 9 to 13, see the article: Blackjack Part II. 
-         scan.close();
+        scan.close();
 
     }//main
 
