@@ -79,8 +79,7 @@ public class Blackjack {
      */
     public static int drawRandomCard() {
         return (int) (Math.random() * 13) + 1;
-    }//drc
-    
+    }
 
     /** 
      * Function name – cardString
@@ -227,7 +226,7 @@ public class Blackjack {
         "  | JJJ |\n"+
         "  |  J  |\n"+
         "  |_____|\n";
-    }//fD
+    }
     
     /** Task 7 – make a function that asks the user to hit or stay.
      * Function name – hitOrStay
