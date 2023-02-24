@@ -22,9 +22,9 @@ public class Blackjack {
         //dealer cards
         int dealerCard1 = drawRandomCard();
         int dealerCard2 = drawRandomCard();
-        int dealerHandValue = Math.min(dealerCard1, 10) + Math.min(dealerCard2, 10);
-
-        System.out.println("The dealer shows \n " + cardString(dealerCard1) + "\n and has a card facing down \n" + faceDown());
+        int dealerTotal = Math.min(dealerCard1, 10) + Math.min(dealerCard2, 10);
+        System.out.println("\nDealer's turn.");
+        System.out.println("The dealer shows " + cardString(dealerCard1) + "\n and has a card facing down \n" + faceDown());
         System.out.println("The dealer's total is hidden.");
 
         while (true) {
@@ -46,7 +46,25 @@ public class Blackjack {
 
         System.out.println("\nDealer's turn.");
         System.out.println("\n The Dealer's cards are \n " + cardString(dealerCard1) + "\n and " + cardString(dealerCard2));
+        System.out.println("Dealer's total is " + dealerTotal);
+
+        while (dealerTotal < 17) {
+            int newCard = drawRandomCard();
+            dealerTotal += Math.min(newCard, 10);
+            System.out.println("\n Dealer gets a \n " + cardString(newCard));
+            System.out.println("Dealer's total is " + dealerTotal);
+        }
+
+        if (dealerTotal > 21) { 
+            System.out.println("Bust! Dealer loses.");
+            System.exit(0);
+        }
         
+        if (userTotal > dealerTotal) {
+            System.out.println("Player wins.");
+        } else {
+            System.out.println("Dealer wins!");
+        }
         scan.close();
 
     }//main
